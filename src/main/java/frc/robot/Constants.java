@@ -16,7 +16,7 @@ public final class Constants {
   public static class CanIDs {
     public static final int LeftMaster = 4;
     public static final int RightMaster = 3;
-    public static final int LeftSlave = 2;
+    public static final int LeftSlave = 2; // VERY important change
     public static final int RightSlave = 1;
   }
 
