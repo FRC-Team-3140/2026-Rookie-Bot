@@ -4,7 +4,11 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.ctre.phoenix.motorcontrol.NeutralMode;
+//above might be important. Don't get rid of it. KP
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -25,6 +29,33 @@ public class Drivetrain extends SubsystemBase {
       rightRear.follow(rightFront);
   
       rightFront.setInverted(true);
+      rightRear.setInverted(true);
+      leftFront.setInverted(false);
+      leftRear.setInverted(false);
+      
+      int peakAmps =35;
+      int continuousAmps = 30;
+      int peakDurationsMs = 200;
+
+      leftFront.configPeakCurrentLimit(peakAmps, 10);
+      leftFront.configPeakCurrentDuration(peakDurationsMs, 10);
+      leftFront.configContinuousCurrentLimit(continuousAmps, 10);
+      leftFront.enableCurrentLimit(true);
+
+      leftRear.configPeakCurrentLimit(peakAmps, 10);
+      leftRear.configPeakCurrentDuration(peakDurationsMs, 10);
+      leftRear.configContinuousCurrentLimit(continuousAmps, 10);
+      leftRear.enableCurrentLimit(true);
+
+      rightFront.configPeakCurrentLimit(peakAmps, 10);
+      rightFront.configPeakCurrentDuration(peakDurationsMs, 10);
+      rightFront.configContinuousCurrentLimit(continuousAmps, 10);
+      rightFront.enableCurrentLimit(true);
+
+      rightRear.configPeakCurrentLimit(peakAmps, 10);
+      rightRear.configPeakCurrentDuration(peakDurationsMs, 10);
+      rightRear.configContinuousCurrentLimit(continuousAmps, 10);
+      rightRear.enableCurrentLimit(true);
   
       drive = new DifferentialDrive(leftFront, rightFront);
 }
@@ -67,6 +98,10 @@ public class Drivetrain extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    leftRear.setNeutralMode(NeutralMode.Brake);
+    rightRear.setNeutralMode(NeutralMode.Brake);
+    leftFront.setNeutralMode(NeutralMode.Brake);
+    rightFront.setNeutralMode(NeutralMode.Brake);
   }
 
   @Override

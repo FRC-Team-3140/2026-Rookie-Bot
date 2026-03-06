@@ -16,8 +16,11 @@ public final class Constants {
   public static class CanIDs {
     public static final int LeftMaster = 4;
     public static final int RightMaster = 3;
-    public static final int LeftSlave = 2; // VERY important change
-    public static final int RightSlave = 1;
+    public static final int LeftSlave = 1;
+    public static final int RightSlave = 2;
+
+    public static final int feederRoller = 5;
+    public static final int intakeLauncherRoller = 6;
   }
 
   public static class OperatorConstants {
